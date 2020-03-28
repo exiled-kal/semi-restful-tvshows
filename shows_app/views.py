@@ -71,5 +71,3 @@ def DeleteShow(request, id):
     show = Show.objects.get(id=id)
     show.delete()
     return redirect(f"/shows")
-
-

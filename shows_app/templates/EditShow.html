@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="A really cool site!">
+</head>
+
+<body>
+
+    <div class="col">
+        <h1 class="text-left">Edit Show: {{ show.id }} </h1>
+    </div>
+    <div class="offsest-md-5">
+        <a href="/shows" class="top nav-style btn btn-outline-primary">&#8249;&nbsp;&nbsp;Go Back</a>
+    </div>
+
+
+    <div class="col-8 ">
+        <form action="/shows/{{ show.id }}/update" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <label for="title" class="title">Title</label>
+                <input type="text" class="form-control" name="title" value="{{ show.title }}">
+            </div>
+            <div class="row mt-4">
+                <div class="col-4 p-0 mr-5">
+                    <label for="network" class="title">Network</label>
+                    <input type="text" class="form-control" name="network" value="{{ show.network }}">
+                </div>
+                <div class="col p-0 ml-5">
+                    <label for="release_date" class="title">Release Date</label>
+                    <input type="date" class="form-control" name="release_date"
+                        value="{{ show.release_date|date:'Y-m-d' }}" required>
+                </div>
+            </div>
+            <div class="row form-group mt-4">
+                <label for="description" class="title">Description</label>
+                <textarea class="form-control resize" cols="30" rows="5" name="description"
+                    value="{{ show.description }}">{{ show.description }}</textarea>
+            </div>
+            <div class="row mt-5 justify-content-center">
+                <button type="submit" class="btn btn-primary pl-4 pr-4" name="updated_at"
+                    value="{{ show.updated_at }}">Update</button>
+                <p><a href="/shows/{{ show.id }}" class="btn btn-outline-secondary ml-4" role="button">Go to Show</a>
+                </p>
+            </div>
+
+
+        </form>
+
+    </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
